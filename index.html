@@ -48,37 +48,57 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 20% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 65%);
+            background: radial-gradient(ellipse 70% 50% at 20% 10%, rgba(99, 102, 241, 0.07) 0%, transparent 65%),
+            radial-gradient(ellipse 50% 40% at 80% 90%, rgba(139, 92, 246, 0.04) 0%, transparent 60%);
             z-index: -1;
             pointer-events: none;
         }
 
         .card {
-            max-width: 520px;
+            max-width: 420px;
             width: 100%;
-            padding: 40px 38px;
-            background: rgba(13, 13, 23, 0.85);
+            padding: 40px 36px 32px;
+            background: rgba(13, 13, 23, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 18px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(12px);
+            border-radius: 22px;
+            box-shadow: 0 32px 72px rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(16px);
+            text-align: center;
+        }
+
+        .avatar-wrap {
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(129, 140, 248, 0.35);
+            box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
         .header {
-            margin-bottom: 28px;
+            margin-bottom: 20px;
         }
 
         .name {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: -0.025em;
-            line-height: 1.1;
+            line-height: 1.15;
+        }
+
+        .name .heart {
+            color: #f472b6;
+            font-style: normal;
         }
 
         .role {
-            margin-top: 7px;
-            font-size: 0.95rem;
+            margin-top: 6px;
+            font-size: 0.9rem;
             font-weight: 500;
             color: #818cf8;
             letter-spacing: 0.01em;
@@ -88,58 +108,59 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-top: 8px;
-            font-size: 0.82rem;
+            margin-top: 7px;
+            font-size: 0.8rem;
             color: #52525b;
         }
 
         .location i {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
         }
 
         .divider {
             height: 1px;
             background: rgba(255, 255, 255, 0.06);
-            margin: 26px 0;
+            margin: 22px 0;
         }
 
         .about {
-            font-size: 0.925rem;
+            font-size: 0.9rem;
             color: #8b949e;
             line-height: 1.7;
-            margin-bottom: 26px;
+            margin-bottom: 24px;
         }
 
         .social-links {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .social-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 9px 16px;
-            border-radius: 9px;
+            gap: 7px;
+            padding: 9px 18px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.03);
             color: #94a3b8;
-            font-size: 0.875rem;
+            font-size: 0.865rem;
             font-weight: 500;
             text-decoration: none;
             transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
         }
 
         .social-link i {
-            font-size: 1rem;
+            font-size: 0.975rem;
         }
 
         .social-link:hover {
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(255, 255, 255, 0.16);
             color: #e2e8f0;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .social-link:focus-visible {
@@ -149,12 +170,12 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
 
         footer {
             margin-top: 28px;
-            padding-top: 20px;
+            padding-top: 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: #3f3f46;
         }
 
@@ -176,23 +197,27 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
 
         @media (max-width: 480px) {
             .card {
-                padding: 30px 22px;
+                padding: 32px 20px 28px;
             }
         }
     </style>
 </head>
 <body>
 <div class="card">
+    <div class="avatar-wrap">
+        <img class="avatar" src="avatar.jpg" alt="Florian Reuth">
+    </div>
+
     <div class="header">
-        <h1 class="name">Florian Reuth</h1>
-        <p class="role">Software Developer</p>
+        <h1 class="name">Florian Reuth <span class="heart">♡</span></h1>
         <span class="location"><i class="fas fa-location-dot"></i> Germany</span>
     </div>
 
     <div class="divider"></div>
 
     <p class="about">
-        Developer focused on networking, protocols, and JVM tooling. I build open-source libraries and user-space tools.
+        High school student and part-time software engineer. I build open-source libraries used by millions of end
+        users.
     </p>
 
     <div class="social-links">
