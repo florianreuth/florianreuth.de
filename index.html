@@ -10,20 +10,20 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Florian Reuth</title>
-    <meta name="description" content="Florian Reuth — Software Developer from Germany">
+    <meta name="description" content="Florian Reuth — Software Engineer from Germany">
     <meta name="author" content="Florian Reuth">
 
     <meta property="og:title" content="Florian Reuth">
-    <meta property="og:description" content="Software Developer · Germany">
+    <meta property="og:description" content="Software Engineer · Germany">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://florianreuth.de/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
         * {
@@ -32,210 +32,242 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #0c0d10;
+            --ink: #f4f5f7;
+            --muted: #a2a8b2;
+            --subtle: #6b7078;
+            --hairline: #26282e;
+            --accent: #6d84f5;
+            --heart: #f472b6;
+            --column: 25rem;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #08080e;
-            color: #c9d1d9;
-            padding: 24px;
+            background: var(--bg);
+            color: var(--ink);
+            padding: 56px 24px 40px;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 20% 10%, rgba(99, 102, 241, 0.07) 0%, transparent 65%),
-            radial-gradient(ellipse 50% 40% at 80% 90%, rgba(139, 92, 246, 0.04) 0%, transparent 60%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .card {
-            max-width: 420px;
+        .profile {
             width: 100%;
-            padding: 40px 36px 32px;
-            background: rgba(13, 13, 23, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 22px;
-            box-shadow: 0 32px 72px rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(16px);
+            max-width: var(--column);
             text-align: center;
         }
 
-        .avatar-wrap {
-            margin-bottom: 20px;
-        }
-
-        .avatar {
-            width: 88px;
-            height: 88px;
+        .portrait {
+            width: 128px;
+            height: 128px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(129, 140, 248, 0.35);
-            box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        .header {
-            margin-bottom: 20px;
+            display: block;
+            margin: 0 auto 22px;
+            box-shadow: 0 0 0 1px var(--hairline),
+            0 14px 34px rgba(0, 0, 0, 0.55);
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .name {
-            font-size: 1.75rem;
+            font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+            font-size: clamp(1.9rem, 8vw, 2.3rem);
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.025em;
-            line-height: 1.15;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
         }
 
         .name .heart {
-            color: #f472b6;
+            color: var(--heart);
             font-style: normal;
+            font-weight: 600;
         }
 
-        .role {
-            margin-top: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #818cf8;
-            letter-spacing: 0.01em;
-        }
-
-        .location {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 7px;
-            font-size: 0.8rem;
-            color: #52525b;
-        }
-
-        .location i {
-            font-size: 0.72rem;
-        }
-
-        .divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.06);
-            margin: 22px 0;
-        }
-
-        .about {
-            font-size: 0.9rem;
-            color: #8b949e;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .social-links {
+        .eyebrow {
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
             justify-content: center;
-        }
-
-        .social-link {
-            display: inline-flex;
             align-items: center;
-            gap: 7px;
-            padding: 9px 18px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.03);
-            color: #94a3b8;
-            font-size: 0.865rem;
+            gap: 8px;
+            margin-top: 12px;
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        .eyebrow .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--subtle);
+        }
+
+        .eyebrow .place {
+            color: var(--subtle);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 34px;
+        }
+
+        .link {
+            display: grid;
+            grid-template-columns: 1.25rem 1fr 0.9rem;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--hairline);
+            background: transparent;
+            color: var(--ink);
+            font-size: 0.95rem;
             font-weight: 500;
+            text-align: left;
             text-decoration: none;
-            transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
+            transition: border-color 0.18s, background 0.18s, transform 0.18s;
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+            animation-delay: calc(0.16s + var(--i) * 0.06s);
         }
 
-        .social-link i {
-            font-size: 0.975rem;
+        .link .glyph {
+            font-size: 1.05rem;
+            line-height: 1;
+            text-align: center;
+            color: var(--brand, var(--accent));
         }
 
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.16);
-            color: #e2e8f0;
+        .link .chevron {
+            font-size: 0.72rem;
+            line-height: 1;
+            color: var(--subtle);
+            transition: color 0.18s, transform 0.18s;
+        }
+
+        .link:hover,
+        .link:focus-visible {
+            border-color: var(--brand, var(--accent));
+            background: color-mix(in srgb, var(--brand, var(--accent)) 12%, transparent);
             transform: translateY(-2px);
         }
 
-        .social-link:focus-visible {
-            outline: 2px solid rgba(129, 140, 248, 0.85);
-            outline-offset: 2px;
+        .link:hover .chevron,
+        .link:focus-visible .chevron {
+            color: var(--brand, var(--accent));
+            transform: translateX(3px);
+        }
+
+        .link:focus-visible {
+            outline: 2px solid var(--brand, var(--accent));
+            outline-offset: 3px;
         }
 
         footer {
-            margin-top: 28px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 44px;
             font-size: 0.75rem;
-            color: #3f3f46;
+            color: var(--subtle);
         }
 
         footer a {
-            color: #52525b;
+            color: var(--subtle);
             text-decoration: none;
             transition: color 0.15s;
         }
 
         footer a:hover {
-            color: #71717a;
+            color: var(--accent);
         }
 
         footer a:focus-visible {
-            outline: 2px solid rgba(129, 140, 248, 0.85);
+            outline: 2px solid var(--accent);
             outline-offset: 2px;
             border-radius: 3px;
         }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 32px 20px 28px;
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .portrait,
+            .name,
+            .eyebrow,
+            .link {
+                animation: none;
+            }
+
+            .link:hover,
+            .link:focus-visible {
+                transform: none;
+            }
+
+            .link:hover .chevron,
+            .link:focus-visible .chevron {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="avatar-wrap">
-        <img class="avatar" src="avatar.jpg" alt="Florian Reuth">
-    </div>
+<main class="profile">
+    <img class="portrait" src="avatar.jpg" alt="Florian Reuth">
 
-    <div class="header">
-        <h1 class="name">Florian Reuth <span class="heart">♡</span></h1>
-        <span class="location"><i class="fas fa-location-dot"></i> Germany</span>
-    </div>
+    <h1 class="name">Florian Reuth <span class="heart" aria-hidden="true">♡</span></h1>
 
-    <div class="divider"></div>
-
-    <p class="about">
-        High school student and part-time software engineer. I build open-source libraries used by millions of end
-        users.
+    <p class="eyebrow">
+        Software Developer
+        <span class="dot" aria-hidden="true"></span>
+        <span class="place">Germany</span>
     </p>
 
-    <div class="social-links">
-        <a href="https://github.com/florianreuth" target="_blank" rel="noopener noreferrer" class="social-link">
-            <i class="fab fa-github"></i> GitHub
+    <nav class="links" aria-label="Links">
+        <a class="link" style="--brand: #8957e5; --i: 0" href="https://github.com/florianreuth" target="_blank"
+           rel="noopener noreferrer">
+            <i class="fab fa-github glyph" aria-hidden="true"></i>
+            <span>GitHub</span>
+            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
         </a>
-        <a href="mailto:florian@florianreuth.de" class="social-link">
-            <i class="fas fa-envelope"></i> Email
+        <a class="link" style="--brand: #1185fe; --i: 1" href="https://bsky.app/profile/florianreuth.de" target="_blank"
+           rel="noopener noreferrer">
+            <i class="fab fa-bluesky glyph" aria-hidden="true"></i>
+            <span>Bluesky</span>
+            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
         </a>
-        <a href="https://ko-fi.com/florianreuth" target="_blank" rel="noopener noreferrer" class="social-link">
-            <i class="fas fa-mug-hot"></i> Ko-fi
+        <a class="link" style="--brand: #ff5e5b; --i: 2" href="https://ko-fi.com/florianreuth" target="_blank"
+           rel="noopener noreferrer">
+            <i class="fas fa-mug-hot glyph" aria-hidden="true"></i>
+            <span>Ko-fi</span>
+            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
         </a>
-    </div>
+        <a class="link" style="--brand: #6d84f5; --i: 3" href="mailto:florian@florianreuth.de">
+            <i class="fas fa-envelope glyph" aria-hidden="true"></i>
+            <span>Email</span>
+            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
+        </a>
+    </nav>
 
     <footer>
-        <span>© 2024–2026 Florian Reuth</span>
+        <span>© 2026 Florian Reuth</span>
         <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>
     </footer>
-</div>
+</main>
 </body>
 </html>
