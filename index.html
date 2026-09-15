@@ -10,11 +10,11 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Florian Reuth</title>
-    <meta name="description" content="Florian Reuth — Software Engineer from Germany">
+    <meta name="description" content="Florian Reuth — Lead Software Developer and Student from Germany">
     <meta name="author" content="Florian Reuth">
 
     <meta property="og:title" content="Florian Reuth">
-    <meta property="og:description" content="Software Engineer · Germany">
+    <meta property="og:description" content="Lead Software Developer · Student · Germany">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://florianreuth.de/">
 
@@ -23,7 +23,6 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
     <link
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
         * {
@@ -35,12 +34,11 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
         :root {
             --bg: #0c0d10;
             --ink: #f4f5f7;
-            --muted: #a2a8b2;
             --subtle: #6b7078;
             --hairline: #26282e;
             --accent: #6d84f5;
             --heart: #f472b6;
-            --column: 25rem;
+            --column: 27rem;
         }
 
         body {
@@ -62,18 +60,6 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
             width: 100%;
             max-width: var(--column);
             text-align: center;
-        }
-
-        .portrait {
-            width: 128px;
-            height: 128px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 22px;
-            box-shadow: 0 0 0 1px var(--hairline),
-            0 14px 34px rgba(0, 0, 0, 0.55);
-            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .name {
@@ -98,9 +84,10 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
             text-transform: uppercase;
             color: var(--accent);
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 6px 8px;
             margin-top: 12px;
             animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
         }
@@ -117,60 +104,61 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
         }
 
         .links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
             margin-top: 34px;
         }
 
         .link {
-            display: grid;
-            grid-template-columns: 1.25rem 1fr 0.9rem;
+            --brand: var(--accent);
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 14px;
-            padding: 15px 18px;
-            border-radius: 14px;
+            justify-content: center;
+            gap: 12px;
+            padding: 26px 10px 22px;
+            border-radius: 18px;
             border: 1px solid var(--hairline);
             background: transparent;
             color: var(--ink);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            text-align: left;
             text-decoration: none;
             transition: border-color 0.18s, background 0.18s, transform 0.18s;
-            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: calc(0.16s + var(--i) * 0.06s);
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+        }
+
+        .link:nth-child(2) {
+            animation-delay: 0.22s;
+        }
+
+        .link:nth-child(3) {
+            animation-delay: 0.28s;
         }
 
         .link .glyph {
-            font-size: 1.05rem;
-            line-height: 1;
-            text-align: center;
-            color: var(--brand, var(--accent));
-        }
-
-        .link .chevron {
-            font-size: 0.72rem;
-            line-height: 1;
-            color: var(--subtle);
-            transition: color 0.18s, transform 0.18s;
+            width: 1.75rem;
+            height: 1.75rem;
+            display: block;
+            fill: var(--brand);
+            transition: transform 0.18s;
         }
 
         .link:hover,
         .link:focus-visible {
-            border-color: var(--brand, var(--accent));
-            background: color-mix(in srgb, var(--brand, var(--accent)) 12%, transparent);
-            transform: translateY(-2px);
+            border-color: var(--brand);
+            background: color-mix(in srgb, var(--brand) 12%, transparent);
+            transform: translateY(-3px);
         }
 
-        .link:hover .chevron,
-        .link:focus-visible .chevron {
-            color: var(--brand, var(--accent));
-            transform: translateX(3px);
+        .link:hover .glyph,
+        .link:focus-visible .glyph {
+            transform: scale(1.08);
         }
 
         .link:focus-visible {
-            outline: 2px solid var(--brand, var(--accent));
+            outline: 2px solid var(--brand);
             outline-offset: 3px;
         }
 
@@ -207,7 +195,6 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .portrait,
             .name,
             .eyebrow,
             .link {
@@ -219,8 +206,8 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
                 transform: none;
             }
 
-            .link:hover .chevron,
-            .link:focus-visible .chevron {
+            .link:hover .glyph,
+            .link:focus-visible .glyph {
                 transform: none;
             }
         }
@@ -228,39 +215,39 @@ Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
 </head>
 <body>
 <main class="profile">
-    <img class="portrait" src="avatar.jpg" alt="Florian Reuth">
-
     <h1 class="name">Florian Reuth <span class="heart" aria-hidden="true">♡</span></h1>
 
     <p class="eyebrow">
-        Software Developer
+        Lead Software Developer
+        <span class="dot" aria-hidden="true"></span>
+        Student
         <span class="dot" aria-hidden="true"></span>
         <span class="place">Germany</span>
     </p>
 
     <nav class="links" aria-label="Links">
-        <a class="link" style="--brand: #8957e5; --i: 0" href="https://github.com/florianreuth" target="_blank"
+        <a class="link" style="--brand: #8957e5" href="https://github.com/florianreuth" target="_blank"
            rel="noopener noreferrer">
-            <i class="fab fa-github glyph" aria-hidden="true"></i>
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
             <span>GitHub</span>
-            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
         </a>
-        <a class="link" style="--brand: #1185fe; --i: 1" href="https://bsky.app/profile/florianreuth.de" target="_blank"
-           rel="noopener noreferrer">
-            <i class="fab fa-bluesky glyph" aria-hidden="true"></i>
-            <span>Bluesky</span>
-            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
+        <a class="link" style="--brand: #0a66c2" href="https://www.linkedin.com/in/florianreuth/"
+           target="_blank" rel="noopener noreferrer">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
+            <span>LinkedIn</span>
         </a>
-        <a class="link" style="--brand: #ff5e5b; --i: 2" href="https://ko-fi.com/florianreuth" target="_blank"
-           rel="noopener noreferrer">
-            <i class="fas fa-mug-hot glyph" aria-hidden="true"></i>
-            <span>Ko-fi</span>
-            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
-        </a>
-        <a class="link" style="--brand: #6d84f5; --i: 3" href="mailto:florian@florianreuth.de">
-            <i class="fas fa-envelope glyph" aria-hidden="true"></i>
+        <a class="link" style="--brand: #6d84f5" href="mailto:florian@florianreuth.de">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
             <span>Email</span>
-            <i class="fas fa-chevron-right chevron" aria-hidden="true"></i>
         </a>
     </nav>
 
