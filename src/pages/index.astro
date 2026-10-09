@@ -1,8 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
+import Footer from "../components/Footer.astro";
 import { links, profile } from "../data/profile";
-
-const year = new Date().getFullYear();
 ---
 
 <Base title={profile.name} description={`${profile.name} — ${profile.tagline}`}>
@@ -34,10 +33,7 @@ const year = new Date().getFullYear();
             ))}
         </ul>
 
-        <footer>
-            <span>© {year} {profile.name}</span>
-            <a href="https://github.com/florianreuth/florianreuth.de" target="_blank" rel="noopener noreferrer">Quellcode</a>
-        </footer>
+        <Footer/>
     </main>
 </Base>
 
@@ -154,26 +150,6 @@ const year = new Date().getFullYear();
     .links a:hover .handle,
     .links a:focus-visible .handle {
         color: var(--accent);
-    }
-
-    footer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 20px;
-        margin-top: 48px;
-        font-size: 0.875rem;
-        color: var(--muted);
-    }
-
-    footer a {
-        color: inherit;
-        text-underline-offset: 3px;
-        text-decoration-color: var(--rule);
-    }
-
-    footer a:hover {
-        color: var(--accent);
-        text-decoration-color: currentColor;
     }
 
     @keyframes sheen {

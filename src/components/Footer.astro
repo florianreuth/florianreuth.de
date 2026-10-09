@@ -1,0 +1,33 @@
+---
+import { profile } from "../data/profile";
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+    <span>© {year} {profile.name}</span>
+    <a href="/imprint">Impressum</a>
+    <a href="/privacy">Datenschutz</a>
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 20px;
+        margin-top: 48px;
+        font-size: 0.875rem;
+        color: var(--muted);
+    }
+
+    footer a {
+        color: inherit;
+        text-underline-offset: 3px;
+        text-decoration-color: var(--rule);
+    }
+
+    footer a:hover {
+        color: var(--accent);
+        text-decoration-color: currentColor;
+    }
+</style>

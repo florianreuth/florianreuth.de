@@ -7,6 +7,12 @@ export const profile = {
     ],
 };
 
+export const contact = {
+    name: "Darkstone Cloud",
+    address: ["A-CS/EP1", "Wuhlestraße 7a", "12683 Berlin"],
+    email: "florian@florianreuth.de",
+};
+
 export const links = [
     {
         label: "GitHub",
