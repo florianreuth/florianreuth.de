@@ -1,0 +1,200 @@
+---
+import Base from "../layouts/Base.astro";
+import { links, profile } from "../data/profile";
+
+const year = new Date().getFullYear();
+---
+
+<Base title={profile.name} description={`${profile.name} — ${profile.tagline}`}>
+    <main class="profile">
+        <header>
+            <div class="avatar">
+                <img src="/avatar.jpg" alt="Avatar: ein dreifarbiger Hund" width="331" height="331">
+            </div>
+            <h1>{profile.name}</h1>
+            <p class="tagline">{profile.tagline}</p>
+        </header>
+
+        <div class="intro">
+            {profile.intro.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <ul class="links" aria-label="Links">
+            {links.map((link) => (
+                <li>
+                    <a
+                        href={link.href}
+                        {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d={link.icon}/></svg>
+                        <span class="label">{link.label}</span>
+                        <span class="handle">{link.handle}</span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+
+        <footer>
+            <span>© {year} {profile.name}</span>
+            <a href="https://github.com/florianreuth/florianreuth.de" target="_blank" rel="noopener noreferrer">Quellcode</a>
+        </footer>
+    </main>
+</Base>
+
+<style>
+    @property --sheen {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+    }
+
+    .profile {
+        width: 100%;
+        max-width: 34rem;
+        margin: auto;
+    }
+
+    .avatar {
+        width: 136px;
+        aspect-ratio: 1;
+        padding: 4px;
+        border-radius: 50%;
+        background: conic-gradient(
+            from var(--sheen),
+            var(--accent),
+            var(--tan),
+            var(--oak),
+            var(--ink) 60%,
+            var(--accent)
+        );
+        animation: sheen 1.6s var(--ease) both;
+        transition: --sheen 1.2s var(--ease);
+    }
+
+    .avatar:hover {
+        --sheen: 180deg;
+    }
+
+    .avatar img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid var(--bg);
+        object-fit: cover;
+    }
+
+    h1 {
+        margin-top: 28px;
+        font-size: clamp(2.5rem, 11vw, 3.75rem);
+        font-weight: 650;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+    }
+
+    .tagline {
+        margin-top: 10px;
+        font-size: 1.25rem;
+        color: var(--muted);
+    }
+
+    .intro {
+        margin-top: 32px;
+        text-wrap: pretty;
+    }
+
+    .intro p + p {
+        margin-top: 0.8em;
+    }
+
+    .links {
+        list-style: none;
+        margin-top: 40px;
+        border-top: 1px solid var(--rule);
+    }
+
+    .links li {
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .links a {
+        display: grid;
+        grid-template-columns: 20px auto 1fr;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 2px;
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    .links svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        transition: fill 0.2s;
+    }
+
+    .label {
+        font-weight: 600;
+    }
+
+    .handle {
+        justify-self: end;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+        text-align: right;
+        transition: color 0.2s;
+    }
+
+    .links a:hover svg,
+    .links a:focus-visible svg {
+        fill: var(--accent);
+    }
+
+    .links a:hover .handle,
+    .links a:focus-visible .handle {
+        color: var(--accent);
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 20px;
+        margin-top: 48px;
+        font-size: 0.875rem;
+        color: var(--muted);
+    }
+
+    footer a {
+        color: inherit;
+        text-underline-offset: 3px;
+        text-decoration-color: var(--rule);
+    }
+
+    footer a:hover {
+        color: var(--accent);
+        text-decoration-color: currentColor;
+    }
+
+    @keyframes sheen {
+        from {
+            --sheen: -270deg;
+            opacity: 0;
+            transform: scale(0.92);
+        }
+    }
+
+    @media (max-width: 420px) {
+        .links a {
+            grid-template-columns: 20px 1fr;
+            row-gap: 2px;
+        }
+
+        .handle {
+            grid-column: 2;
+            justify-self: start;
+            text-align: left;
+            font-size: 0.9375rem;
+        }
+    }
+</style>

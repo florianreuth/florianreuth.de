@@ -1,0 +1,110 @@
+---
+// This project is licensed under the MIT License.
+// See the LICENSE file in the project root for details.
+//
+// Copyright (c) 2024-2026 Florian Reuth <git@florianreuth.de>
+
+import "@fontsource-variable/geist";
+import { profile } from "../data/profile";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta name="author" content={profile.name}>
+    <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#171311" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href={canonical}>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="sitemap" href="/sitemap-index.xml">
+
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:url" content={canonical}>
+    <meta property="og:image" content={new URL("/avatar.jpg", Astro.site)}>
+</head>
+<body>
+<slot/>
+</body>
+</html>
+
+<style is:global>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg: #fbfaf8;
+        --ink: #1f1a17;
+        --muted: #6b6058;
+        --rule: #e8e2da;
+        --accent: #9a4f1e;
+        --tan: #c98a4b;
+        --oak: #c9a877;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        color-scheme: light dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #171311;
+            --ink: #f5efe8;
+            --muted: #b3a79b;
+            --rule: #2e2622;
+            --accent: #e0995f;
+            --tan: #b9773d;
+            --oak: #d8bf93;
+        }
+    }
+
+    body {
+        font-family: "Geist Variable", system-ui, sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        display: flex;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        padding: 64px 16px 40px;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background: var(--accent);
+        color: var(--bg);
+    }
+
+    a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+</style>

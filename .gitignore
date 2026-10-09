@@ -31,6 +31,8 @@ bin/
 
 DS_Store
 
-# Misc
+# Node / Astro
 
-run/
+node_modules/
+dist/
+.astro/
