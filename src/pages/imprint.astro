@@ -6,8 +6,12 @@ import { contact } from "../data/profile";
 <Legal title="Impressum">
     <h2>Angaben gemäß § 5 DDG</h2>
     <p>
-        {contact.name}<br>
-        {contact.address.map((line) => <>{line}<br></>)}
+        Verantwortlicher:<br>
+        {contact.name}
+    </p>
+    <p>
+        Anschrift:<br>
+        {contact.address.map((line, i) => <>{i > 0 && <br>}{line}</>)}
     </p>
 
     <h2>Kontakt</h2>
@@ -15,8 +19,12 @@ import { contact } from "../data/profile";
 
     <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
     <p>
-        {contact.name}<br>
-        {contact.address.map((line) => <>{line}<br></>)}
+        Verantwortlicher:<br>
+        {contact.name}
+    </p>
+    <p>
+        Anschrift:<br>
+        {contact.address.map((line, i) => <>{i > 0 && <br>}{line}</>)}
     </p>
 
     <h2>Haftung für Links</h2>

@@ -5,11 +5,12 @@ import { contact } from "../data/profile";
 
 <Legal title="Datenschutzerklärung">
     <h2>Verantwortlicher</h2>
+    <p>{contact.name}</p>
     <p>
-        {contact.name}<br>
-        {contact.address.map((line) => <>{line}<br></>)}
-        E-Mail: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        Anschrift:<br>
+        {contact.address.map((line, i) => <>{i > 0 && <br>}{line}</>)}
     </p>
+    <p>E-Mail: <a href={`mailto:${contact.email}`}>{contact.email}</a></p>
 
     <h2>Überblick</h2>
     <p>
