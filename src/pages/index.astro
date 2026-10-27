@@ -8,7 +8,7 @@ import { links, profile } from "../data/profile";
     <main class="profile">
         <header>
             <div class="avatar">
-                <img src="/avatar.jpg" alt="Avatar: ein dreifarbiger Hund" width="331" height="331">
+                <img src="/avatar.jpg" alt="Avatar" width="640" height="640">
             </div>
             <h1>{profile.name}</h1>
             <p class="tagline">{profile.tagline}</p>
@@ -51,15 +51,15 @@ import { links, profile } from "../data/profile";
     }
 
     .avatar {
-        width: 136px;
+        width: 160px;
         aspect-ratio: 1;
         padding: 4px;
         border-radius: 50%;
         background: conic-gradient(
             from var(--sheen),
             var(--accent),
-            var(--tan),
-            var(--oak),
+            var(--neon),
+            var(--amber),
             var(--ink) 60%,
             var(--accent)
         );

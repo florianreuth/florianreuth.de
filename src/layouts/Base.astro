@@ -24,8 +24,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description}>
     <meta name="author" content={profile.name}>
-    <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#171311" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8f8fb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#10111c" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href={canonical}>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="sitemap" href="/sitemap-index.xml">
@@ -52,26 +52,26 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     }
 
     :root {
-        --bg: #fbfaf8;
-        --ink: #1f1a17;
-        --muted: #6b6058;
-        --rule: #e8e2da;
-        --accent: #9a4f1e;
-        --tan: #c98a4b;
-        --oak: #c9a877;
+        --bg: #f8f8fb;
+        --ink: #1a1b2e;
+        --muted: #5f6178;
+        --rule: #e3e3ec;
+        --accent: #a3307f;
+        --neon: #2a8fd6;
+        --amber: #e8743b;
         --ease: cubic-bezier(0.16, 1, 0.3, 1);
         color-scheme: light dark;
     }
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --bg: #171311;
-            --ink: #f5efe8;
-            --muted: #b3a79b;
-            --rule: #2e2622;
-            --accent: #e0995f;
-            --tan: #b9773d;
-            --oak: #d8bf93;
+            --bg: #10111c;
+            --ink: #eef0f8;
+            --muted: #a3a6bd;
+            --rule: #262839;
+            --accent: #e77fc8;
+            --neon: #4cc3f0;
+            --amber: #f29256;
         }
     }
 
