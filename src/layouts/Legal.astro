@@ -1,6 +1,7 @@
 ---
 import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
 import { profile } from "../data/profile";
 
 interface Props {
@@ -11,25 +12,27 @@ const { title } = Astro.props;
 ---
 
 <Base title={`${title} — ${profile.name}`} description={`${title} von ${profile.name}`}>
-    <main class="legal">
-        <a class="back" href="/">← Startseite</a>
-        <h1>{title}</h1>
-        <slot/>
+    <div class="legal">
+        <Topbar/>
+        <main>
+            <h1>{title}</h1>
+            <slot/>
+        </main>
         <Footer/>
-    </main>
+    </div>
 </Base>
 
 <style>
     .legal {
         width: 100%;
-        max-width: 40rem;
+        max-width: 34rem;
         margin: 0 auto;
         text-wrap: pretty;
         overflow-wrap: anywhere;
     }
 
     h1 {
-        margin-top: 24px;
+        margin-top: 56px;
         font-size: clamp(2rem, 9vw, 2.75rem);
         font-weight: 650;
         line-height: 1.1;
@@ -58,13 +61,8 @@ const { title } = Astro.props;
         padding-left: 1.25em;
     }
 
-    .legal :global(a) {
+    .legal main :global(a) {
         color: var(--accent);
         text-underline-offset: 3px;
-    }
-
-    .back {
-        font-size: 0.875rem;
-        text-decoration: none;
     }
 </style>

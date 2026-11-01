@@ -1,0 +1,66 @@
+---
+import Base from "./Base.astro";
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
+import { profile } from "../data/profile";
+
+interface Props {
+    title?: string;
+    lead?: string;
+}
+
+const { title, lead } = Astro.props;
+---
+
+<Base
+    title={title ? `${title} — ${profile.name}` : profile.name}
+    description={`${profile.name} — ${profile.tagline}`}
+>
+    <div class="page">
+        <Topbar/>
+
+        <main>
+            <h1 class:list={{ hero: !title }}>{title ?? profile.name}</h1>
+            {lead && <p class="lead">{lead}</p>}
+            <div class="content">
+                <slot/>
+            </div>
+        </main>
+
+        <Footer/>
+    </div>
+</Base>
+
+<style>
+    .page {
+        width: 100%;
+        max-width: 34rem;
+        margin: 0 auto;
+    }
+
+    main {
+        margin-top: 56px;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 9vw, 2.75rem);
+        font-weight: 650;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+    }
+
+    h1.hero {
+        font-size: clamp(2.5rem, 11vw, 3.75rem);
+    }
+
+    .lead {
+        margin-top: 10px;
+        font-size: 1.25rem;
+        color: var(--muted);
+        text-wrap: pretty;
+    }
+
+    .content {
+        margin-top: 32px;
+    }
+</style>

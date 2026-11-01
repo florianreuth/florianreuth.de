@@ -1,0 +1,85 @@
+---
+import Profile from "../layouts/Profile.astro";
+import { links } from "../data/profile";
+---
+
+<Profile title="Kontakt" lead="Am schnellsten erreichbar per E-Mail.">
+    <ul class="links" aria-label="Links">
+        {links.map((link) => (
+            <li>
+                <a
+                    href={link.href}
+                    {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d={link.icon}/></svg>
+                    <span class="label">{link.label}</span>
+                    <span class="handle">{link.handle}</span>
+                </a>
+            </li>
+        ))}
+    </ul>
+</Profile>
+
+<style>
+    .links {
+        list-style: none;
+        border-top: 1px solid var(--rule);
+    }
+
+    .links li {
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .links a {
+        display: grid;
+        grid-template-columns: 20px auto 1fr;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 2px;
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    .links svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        transition: fill 0.2s;
+    }
+
+    .label {
+        font-weight: 600;
+    }
+
+    .handle {
+        justify-self: end;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+        text-align: right;
+        transition: color 0.2s;
+    }
+
+    .links a:hover svg,
+    .links a:focus-visible svg {
+        fill: var(--accent);
+    }
+
+    .links a:hover .handle,
+    .links a:focus-visible .handle {
+        color: var(--accent);
+    }
+
+    @media (max-width: 420px) {
+        .links a {
+            grid-template-columns: 20px 1fr;
+            row-gap: 2px;
+        }
+
+        .handle {
+            grid-column: 2;
+            justify-self: start;
+            text-align: left;
+            font-size: 0.9375rem;
+        }
+    }
+</style>

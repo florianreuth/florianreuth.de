@@ -1,0 +1,59 @@
+---
+import { profile, tabs } from "../data/profile";
+
+// Static builds serve "/contact/", dev serves "/contact".
+const current = Astro.url.pathname.replace(/(.)\/$/, "$1");
+---
+
+<header class="topbar">
+    <a class="brand" href="/">{profile.name}</a>
+    <nav aria-label="Seiten">
+        {tabs.map((tab) => (
+            <a href={tab.href} aria-current={tab.href === current ? "page" : undefined}>{tab.label}</a>
+        ))}
+    </nav>
+</header>
+
+<style>
+    .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 0.9375rem;
+        color: var(--muted);
+        text-decoration: none;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+        transition: color 0.2s;
+    }
+
+    nav a:hover,
+    .brand:hover {
+        color: var(--accent);
+    }
+
+    nav a[aria-current="page"] {
+        color: var(--ink);
+        text-decoration-line: underline;
+        text-decoration-color: var(--accent);
+    }
+</style>

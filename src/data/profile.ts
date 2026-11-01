@@ -2,8 +2,8 @@ export const profile = {
     name: "Florian Reuth",
     tagline: "Softwareentwickler und Schüler.",
     intro: [
-        "Ich gehe in die gymnasiale Oberstufe und entwickle nebenbei Software, am liebsten in Java und Kotlin. Mir sind sauberes Design und Software wichtig, auf die man sich verlassen kann.",
-        "Seit Jahren entwickle ich Open-Source-Software, die täglich von Millionen Menschen genutzt wird. Abseits des Codes engagiere ich mich kommunalpolitisch.",
+        "Ich besuche die gymnasiale Oberstufe und entwickle Software, am liebsten in Java und Kotlin. Mir ist wichtig, dass Software sauber durchdacht ist und man sich auf sie verlassen kann.",
+        "Seit Jahren arbeite ich an Open-Source-Projekten, die täglich von Millionen Menschen genutzt werden. Abseits des Codes engagiere ich mich kommunalpolitisch.",
     ],
 };
 
@@ -12,6 +12,26 @@ export const contact = {
     address: ["Darkstone Cloud", "A-CS/EP1", "Wuhlestraße 7a", "12683 Berlin"],
     email: "florian@florianreuth.de",
 };
+
+export const tabs = [
+    { label: "Über mich", href: "/" },
+    { label: "Kontakt", href: "/contact" },
+];
+
+export const projects = [
+    {
+        name: "ViaVersion",
+        href: "https://github.com/ViaVersion/ViaVersion",
+        description: "Übersetzt Netzwerkprotokolle, damit sich neuere Clients mit älteren Serverversionen verbinden können.",
+        meta: "Java",
+    },
+    {
+        name: "Automata",
+        href: "https://florianreuth.de/automata",
+        description: "Webbasiertes Werkzeug zum Visualisieren und Simulieren von Automaten.",
+        meta: "TypeScript",
+    },
+];
 
 export const links = [
     {
