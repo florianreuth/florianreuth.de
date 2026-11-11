@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 7
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+    ignore:
+      # @astrojs/check and svelte-check only support TypeScript 5 and 6 so far.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
